@@ -1,0 +1,31 @@
+{% load static %}
+<header class="header">
+    <div class="container container--narrow">
+        <a href="/" class="header__logo logo_pad">
+            <img src="{% static 'images/logo.svg' %}" alt="DevSearch Logo" />
+        </a>
+        <nav class="header__nav">
+            <input type="checkbox" id="responsive-menu" />
+            <label for="responsive-menu" class="toggle-menu">
+                <span>Menu</span>
+                <div class="toggle-menu__lines"></div>
+            </label>
+            <ul class="header__menu">
+                <li class="header__menuItem"><a href="#" class="header_size">Developers</a></li>
+                <li class="header__menuItem"><a href="{% url 'projects' %}" class="header_size">Projects</a></li>
+                <li class="header__menuItem"><a href="#" class="header_size">Inbox</a></li>
+                <li class="header__menuItem"><a href="#" class="header_size">My Account</a></li>
+                <li class="header__menuItem"><a href="{% url 'create-project' %}" class="btn btn--sub header_size">Add
+                        Project</a>
+                </li>
+                {% if user.is_authenticated %}
+                <span class="header_size">Hello, {{request.user}}<a href={% url 'logout' %}
+                        style="padding-left: 5px;">Logout</a></span>
+                {% else %}
+                <li class="header__menuItem"><a href="{% url 'login' %}" class="btn btn--sub header_size">Login/Sign
+                        Up</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+</header>
