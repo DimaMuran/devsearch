@@ -1,0 +1,30 @@
+{% extends 'main.html' %}
+{% block content %}
+<div class="user_card">
+    <form class="form" method="POST" action="">
+        {% csrf_token %}
+        <div class="regform">
+            {{form.username.label}}
+            {{form.username}}
+            <br>
+            {{form.email.label}}
+            {{form.email}}
+            <br>
+            {{form.password1.label}}
+            {{form.password1}}
+            <br>
+            {{form.password2.label}}
+            {{form.password2}}
+            <br>
+            {{form.errors}}
+            <br>
+            <input type="submit" value="Register">
+        </div>
+    </form>
+    <div class="mt-4">
+        <div class="d-flex justify-content-center links">
+            Already have an account? <a href="{% url 'login' %}" class="ml-2">Sign in</a>
+        </div>
+    </div>
+</div>
+{% endblock content %}
